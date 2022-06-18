@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddScoped<IProductRepository,ProductRepository>();
+builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
 builder.Services
 .AddDbContext<StoreContext>(x => 
   x.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
